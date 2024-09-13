@@ -5,8 +5,8 @@ import rigoImage from "../../img/rigo-baby.jpg";
 
 //create your first component
 const Home = () => {
-	const apiUrl= 'https://playground.4geeks.com/todo/users/yhreyes100';
-	const apiUrlToDo= 'https://playground.4geeks.com/todo/todos';
+		const apiUrl= 'https://playground.4geeks.com/todo/users/yasin_hdez';
+		const apiUrlToDo= 'https://playground.4geeks.com/todo/todos';
 		const [task, setTask] = useState([]);
 		const [inputValue, setInputValue] = useState("");
 		const [edit,setEdit]=useState(null);
@@ -41,7 +41,7 @@ const Home = () => {
 			
 		};
 		async function AddTask(newTask){
-			const response = await fetch(apiUrlToDo+'/yhreyes100', {
+			const response = await fetch(apiUrlToDo+'/yasin_hdez', {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json"
@@ -118,7 +118,7 @@ const Home = () => {
 		},[edit,delet]
 		);
 		useEffect(()=>{
-			function getApi(){
+			function getToDos(){
 				fetch(apiUrl).then(response=>{
 					if(response.ok){
 						return response.json();
@@ -130,10 +130,10 @@ const Home = () => {
 				}))
 				.catch(error=>console.error('Erorr: ', error));
 			}
-			getApi()
+			getToDos()
 		},[])
 		function addUser(){
-			fetch(apiurl,{
+			fetch(apiUrl,{
 				method: 'POST',
 				headers: {'Content-Type': 'application/json'},
 				body: JSON.stringify({name: `yhreyes100`})
