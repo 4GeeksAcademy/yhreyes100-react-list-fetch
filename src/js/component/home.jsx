@@ -194,7 +194,7 @@ const Home = () => {
 									)):""}
 									<li  className="list-group-item list-group-item-secondary flex-container">
 									<div>{`${task!=null?task.length:"0"} Items` }</div> 
-									<div><b className="btn btn-secondary" onClick={()=>(deleteAll())}>Delete All</b></div>
+									<div><b className="btn btn-secondary" onClick={()=>(deleteAll())}><i className="far fa-trash-alt" ></i> DELETE ALL</b></div>
 									</li>
 								</ul>
 						</div>
