@@ -54,7 +54,7 @@ const Home = () => {
 			  .then(data => {
 				  setInputValue("");
 				  setTask(task => [...task, data]);
-				  console.log( `the data is: `,data);
+				 // console.log( `the data is: `,data);
 			  })
 			  .catch(error => {
 				  console.log(error);
@@ -188,8 +188,8 @@ const Home = () => {
 
 									)):""}
 									<li  className="list-group-item list-group-item-secondary flex-container">
-									<div>{`${task!=null?task.length:"0"} Items` }</div> 
-									<div><b className="btn btn-secondary" onClick={()=>(deleteAll())}><i className="far fa-trash-alt" ></i> DELETE ALL</b></div>
+									<div className="first">{`${task!=null?task.length:"0"} Items` }</div> 
+									{task.length<2?"":<div ><b className="btn btn-outline-secondary" onClick={()=>(deleteAll())}><i className="far fa-trash-alt" ></i> DELETE ALL</b></div>}
 									</li>
 								</ul>
 						</div>
