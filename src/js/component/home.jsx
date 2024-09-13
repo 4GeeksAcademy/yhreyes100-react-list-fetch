@@ -61,10 +61,6 @@ const Home = () => {
 			  });
 		}
 		async function UpdateTask(Task){
-			/*deleteAll();
-			Task.forEach((tas)=>{
-				AddTask(tas);
-			})*/
 			const response = await fetch(apiUrlToDo+`/${Task.id}`,{
 				method: "PUT",
 				body: JSON.stringify(Task),
@@ -121,7 +117,6 @@ const Home = () => {
 				}
 		},[edit,delet]
 		);
-		
 		useEffect(()=>{
 			function getApi(){
 				fetch(apiUrl).then(response=>{
