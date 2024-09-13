@@ -41,7 +41,7 @@ const Home = () => {
 			
 		};
 		async function AddTask(newTask){
-			fetch(apiUrlToDo+'/yhreyes100', {
+			const response = await fetch(apiUrlToDo+'/yhreyes100', {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json"
