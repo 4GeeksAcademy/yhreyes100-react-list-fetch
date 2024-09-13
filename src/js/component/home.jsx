@@ -69,17 +69,17 @@ const Home = () => {
 				}
 			  })
 			  .then(resp => {
-				  console.log(resp.ok); // Será true si la respuesta es exitosa
-				  console.log(resp.status); // El código de estado 200, 300, 400, etc.
-				  console.log(resp.text()); // Intentará devolver el resultado exacto como string
-				  return resp.json(); // Intentará parsear el resultado a JSON y retornará una promesa donde puedes usar .then para seguir con la lógica
+				console.log(resp.ok); // Will be true if the response is successful
+				console.log(resp.status); // The status code=200 or code=400 etc.
+				console.log(resp.text()); // Will try to return the exact result as a string
+				return resp.json(); // (returns promise) Will try to parse the result as JSON and return a promise that you can .then for results
 			  })
 			  .then(data => {
 				data = Task;
-				console.log(data); // Esto imprimirá en la consola el objeto exacto recibido del servidor
+				//  console.log(data); // This will print on the console the exact object received from the server
 			  })
 			  .catch(error => {
-				  // Manejo de errores
+				  //   // Error handling
 				  console.log(error);
 			  });
 		}
