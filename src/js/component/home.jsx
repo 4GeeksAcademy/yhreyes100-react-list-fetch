@@ -17,12 +17,12 @@ const Home = () => {
 				if (inputValue.trim() !== '') {
 					// Add a new element at the end of the array
 					if(edit==null){
-						const newTask= { label: inputValue };
+						const newTask= { label: inputValue};
 						AddTask(newTask);
 					}
 					else{
 						const index =  parseInt(edit);
-						const editTask= { label: inputValue };
+						const editTask= { label: inputValue, is_done: task[index].is_done, id: task[index].id };
 						const newTask = [
 							...task.slice(0, parseInt(index)),
 							editTask,								
@@ -31,7 +31,7 @@ const Home = () => {
 						setTask(newTask);  
 						setInputValue("");
 						setEdit(null);  
-						UpdateTask(newTask);  
+						UpdateTask(editTask);  
 					}
 				}
 				else{
@@ -61,10 +61,31 @@ const Home = () => {
 			  });
 		}
 		async function UpdateTask(Task){
-			deleteAll();
+			/*deleteAll();
 			Task.forEach((tas)=>{
 				AddTask(tas);
-			})
+			})*/
+			const response = await fetch(apiUrlToDo+`/${Task.id}`,{
+				method: "PUT",
+				body: JSON.stringify(Task),
+				headers: {
+				  "Content-Type": "application/json"
+				}
+			  })
+			  .then(resp => {
+				  console.log(resp.ok); // Será true si la respuesta es exitosa
+				  console.log(resp.status); // El código de estado 200, 300, 400, etc.
+				  console.log(resp.text()); // Intentará devolver el resultado exacto como string
+				  return resp.json(); // Intentará parsear el resultado a JSON y retornará una promesa donde puedes usar .then para seguir con la lógica
+			  })
+			  .then(data => {
+				data = Task;
+				console.log(data); // Esto imprimirá en la consola el objeto exacto recibido del servidor
+			  })
+			  .catch(error => {
+				  // Manejo de errores
+				  console.log(error);
+			  });
 		}
 		async function deleteTask(index){
 			const taskToDelete = task[index];
